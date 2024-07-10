@@ -1,4 +1,4 @@
-package com.curso.microservicios.spring.examenes.models.entity;
+package com.curso.microservicios.spring.generic.examenes.models.entity;
 
 import java.util.ArrayList;
 import java.util.Date;

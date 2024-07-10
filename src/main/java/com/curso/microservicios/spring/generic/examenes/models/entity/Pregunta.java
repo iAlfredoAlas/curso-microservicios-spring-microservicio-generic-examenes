@@ -1,4 +1,4 @@
-package com.curso.microservicios.spring.examenes.models.entity;
+package com.curso.microservicios.spring.generic.examenes.models.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
