@@ -1,5 +1,6 @@
 package com.curso.microservicios.spring.generic.examenes.models.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -22,17 +23,21 @@ public class Asignatura {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "nombre")
 	private String nombre;
-	
-	@JsonIgnoreProperties(value = {"hijos"})
+
+	@JsonIgnoreProperties(value = { "hijos" })
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Asignatura padre;
-	
-	@JsonIgnoreProperties(value = {"padre"}, allowSetters = true)
+
+	@JsonIgnoreProperties(value = { "padre" }, allowSetters = true)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "padre", cascade = CascadeType.ALL)
 	private List<Asignatura> hijos;
+
+	public Asignatura() {
+		this.hijos = new ArrayList<>();
+	}
 
 	public Long getId() {
 		return id;
@@ -65,7 +70,5 @@ public class Asignatura {
 	public void setHijos(List<Asignatura> hijos) {
 		this.hijos = hijos;
 	}
-	
-	
-	
+
 }
