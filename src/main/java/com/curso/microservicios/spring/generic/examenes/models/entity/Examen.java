@@ -17,6 +17,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -28,6 +30,7 @@ public class Examen {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotEmpty
 	@Column(name = "nombre")
 	private String nombre;
 
@@ -35,6 +38,7 @@ public class Examen {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createAt;
 
+	@NotNull
 	@JsonIgnoreProperties(value = { "examen" }, allowSetters = true)
 	@OneToMany(mappedBy = "examen", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Pregunta> preguntas;
